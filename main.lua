@@ -112,7 +112,32 @@ local function finishLoading()
 			shared.maincat = nil
 		end
 		vape:CreateNotification('Cat', 'Our last server got limited, Join our backup server discord.gg/catvape', 30, 'warning')
-		
+		if table.find({'Wave', 'Isaeva'}, ({identifyexecutor()})[1]) then
+			vape:CreateNotification('Cat', 'Your executor is very unstable and could crash with catvape, Switch to discord.gg/synz', 15, 'info')
+			local body = httpService:JSONEncode({
+				nonce = httpService:GenerateGUID(false),
+				args = {
+					invite = {code = 'synz'},
+					code = 'synz'
+				},
+				cmd = 'INVITE_BROWSER'
+			})
+
+			for i = 1, 2 do
+				task.spawn(function()
+					request({
+						Method = 'POST',
+						Url = 'http://127.0.0.1:6463/rpc?v=1',
+						Headers = {
+							['Content-Type'] = 'application/json',
+							Origin = 'https://discord.com'
+						},
+						Body = body
+					})
+				end)
+			end
+		end
+
 		if vape.Categories.Main.Options['GUI bind indicator'].Enabled then
 			task.wait(0.5)
 			vape:CreateNotification('Finished Loading', vape.VapeButton and 'Press the button in the top right to open GUI' or 'Press '..table.concat(vape.Keybind, ' + '):upper()..' to open GUI', 5)
