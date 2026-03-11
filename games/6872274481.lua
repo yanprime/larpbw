@@ -1186,7 +1186,7 @@ run(function()
 		vape:Clean(task.spawn(function()
 			repeat
 				updateStore(bedwars.Store:getState(), {})
-				task.wait(1)
+				task.wait()
 			until false
 		end))
 	else
@@ -2476,7 +2476,6 @@ run(function() --> by max
 							debug.setupvalue(bedwars.ScytheController.playLocalAnimation, 3, fake)
 						end)
 					end
-					warn('/?')
 
 					task.spawn(function()
 						local started = false
@@ -8903,6 +8902,10 @@ run(function()
 	Animation = Breaker:CreateToggle({Name = 'Animation'})
 	SelfBreak = Breaker:CreateToggle({Name = 'Self Break'})
 	InstantBreak = Breaker:CreateToggle({Name = 'Instant Break'})
+	AutoTool = Breaker:CreateToggle({
+		Name = 'Auto Tool',
+		Tooltip = 'Visualises tool switching'
+	})
 	LimitItem = Breaker:CreateToggle({
 		Name = 'Limit to items',
 		Tooltip = 'Only breaks when tools are held'
