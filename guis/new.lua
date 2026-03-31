@@ -365,8 +365,7 @@ end
 
 local ignore = table.find({'Xeno', 'Solara'}, ({identifyexecutor()})[1])
 getcustomasset = function(path)
-	local file = downloadFile(path)
-	return file and getcustomasset(path) or getcustomassets[path] or ''
+	return getcustomassets[path] or ''
 end
 
 local function getTableSize(tab)
