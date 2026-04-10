@@ -37,7 +37,7 @@ local function downloadFile(path, func)
 	end
 	if not isfile(path) then
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/MaxlaserTech/CatV6/'..readfile('catrewrite/profiles/commit.txt')..'/'..select(1, path:gsub('catrewrite/', '')), true)
+			return game:HttpGet('https://raw.githubusercontent.com/yanprime/larpbw/'..readfile('catrewrite/profiles/commit.txt')..'/'..select(1, path:gsub('catrewrite/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -81,7 +81,7 @@ local function finishLoading()
 				if shared.VapeDeveloper then
 					loadstring(readfile('catrewrite/loader.lua'), 'loader')(sharedData)
 				else
-					loadstring(game:HttpGet('https://raw.githubusercontent.com/MaxlaserTech/CatV6/'..readfile('catrewrite/profiles/commit.txt')..'/loader.lua', true), 'loader')(sharedData)
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/yanprime/larpbw/'..readfile('catrewrite/profiles/commit.txt')..'/loader.lua', true), 'loader')(sharedData)
 				end
 			]]
 			if shared.VapeDeveloper then
@@ -123,7 +123,7 @@ if not shared.VapeIndependent then
 	else
 		if not shared.VapeDeveloper then
 			local success, result = pcall(function()
-				return game:HttpGet('https://raw.githubusercontent.com/MaxlaserTech/CatV6/'..readfile('catrewrite/profiles/commit.txt')..'/games/'..game.PlaceId..'.lua')
+				return game:HttpGet('https://raw.githubusercontent.com/yanprime/larpbw/'..readfile('catrewrite/profiles/commit.txt')..'/games/'..game.PlaceId..'.lua')
 			end)
 
 			if success and result ~= '404: Not Found' then
